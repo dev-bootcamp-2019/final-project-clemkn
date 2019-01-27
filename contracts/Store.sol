@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./SafeMath.sol";
 
+/** @title Store. */
 contract Store {
 
   address payable public owner;
@@ -10,7 +11,7 @@ contract Store {
   mapping (uint256 => Item) public itemsBySku;
   uint256 public latestSku;
 
-  /* Struct */
+  /* Struct Item */
   struct Item {
     uint sku;
     uint stockCount;
@@ -24,24 +25,27 @@ contract Store {
   event LogStockCountUpdated(uint256 indexed sku, uint256 newStockCount);
   event LogPurchaseMade(uint256 indexed sku, uint256 quantity);
 
-  /* Modifiers */
+  /** @dev Check if sender is owner. */
   modifier isOwner() {
     require(msg.sender == owner, "This action can only be performed by the store owner.");
     _;
   }
 
+  /** @dev Check if sku exists. */
   modifier isSkuExists(uint256 sku) {
     require(SafeMath.sub(latestSku, sku) >= 0, "This item does not exist in this store.");
     _;
   }
 
+  /** @dev Check if enough stock is available */
   modifier enoughStockAvailable(uint256 sku, uint256 quantity) {
-    require(SafeMath.sub(itemsBySku[sku].stockCount, quantity) >= 0, "Not enough inventory left.");
+    require(SafeMath.sub(itemsBySku[sku].stockCount, quantity) >= 0, "Not enough stock left.");
     _;
   }
 
+  /** @dev Check if enough eth is sent. */
   modifier enoughEthSent(uint256 sku, uint256 quantity) {
-      require(msg.value >= SafeMath.mul(itemsBySku[sku].price, quantity), "Not enough Ether provided.");
+      require(msg.value >= SafeMath.mul(itemsBySku[sku].price, quantity), "Not enough eth provided.");
 
       _;
 
@@ -50,7 +54,11 @@ contract Store {
       }
   }
 
-  /* Constructor */
+  /** @dev Init the Store contract.
+    * @param _owner Adress of the owner account.
+    * @param _name Name of the store.
+    * @param _description Description of the store.
+    */
   constructor(address payable _owner, string memory _name, string memory _description)
     public
   {
@@ -60,6 +68,11 @@ contract Store {
     latestSku = 0;
   }
 
+  /** @dev Add a new item to the current store.
+    * @param _name Name of the item.
+    * @param _description Description of the item Height of the rectangle.
+    * @param _price Price of the item (wei).
+    */
   function addNewItem(string memory _name, string memory _description, uint256 _price)
     public
     isOwner
@@ -77,6 +90,10 @@ contract Store {
     emit LogNewItemAdded(newItem.name, newItem.description, newItem.sku, newItem.price);
   }
 
+  /** @dev Update the stock count of an item.
+    * @param _sku Sku to identify the item.
+    * @param newStockCount New stock count for the item.
+    */
   function updateStockCount(uint256 _sku, uint256 newStockCount)
     public
     isSkuExists(_sku)
@@ -86,6 +103,10 @@ contract Store {
     emit LogStockCountUpdated(_sku, newStockCount);
   }
 
+  /** @dev Buy an item.
+    * @param _sku Sku to identify the item.
+    * @param quantity Quantity to buy.
+    */
   function buyItem(uint256 _sku, uint256 quantity)
     public
     payable
@@ -97,6 +118,7 @@ contract Store {
     emit LogPurchaseMade(_sku, quantity);
   }
 
+  /** @dev Withdraw funds. */
   function withdraw()
     public
     payable

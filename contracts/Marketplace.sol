@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 import './Store.sol';
 
+/** @title Marketplace. */
 contract Marketplace {
 
   address[] public adminsList;
@@ -17,18 +18,20 @@ contract Marketplace {
   event LogStoreOwnerDeleted(address indexed _storeOwner);
   event LogNewStoreCreated(address owner, address store);
 
-  /* Modifiers */
+  /** @dev Check if admin exists */
   modifier isAdmin(bool _exists) {
     require(_exists, "This function is only available to admins");
     _;
   }
-
+  /** @dev Check if store owner exists */
   modifier isStoreOwner(bool _exists) {
       require(_exists, "This function is only available to store owners");
       _;
   }
 
-  /* Functions */
+  /** @dev Add a new admin.
+  * @param _newAdmin Address of the new admin.
+  */
   function addAdmin(address _newAdmin)
     public
     isAdmin(admins[msg.sender])
@@ -38,6 +41,9 @@ contract Marketplace {
     emit LogAdminAdded(_newAdmin);
   }
 
+  /** @dev Add a new store owner.
+    * @param _newStoreOwner Address of the new store owner.
+    */
   function addStoreOwner(address _newStoreOwner)
     public
     isAdmin(admins[msg.sender])
@@ -47,6 +53,10 @@ contract Marketplace {
     emit LogStoreOwnerAdded(_newStoreOwner);
   }
 
+  /** @dev Create a new store.
+    * @param name Name of the new store.
+    * @param description Description of the new store.
+    */
   function createNewStore(string memory name, string memory description)
     public
     isStoreOwner(storeOwners[msg.sender])
@@ -56,6 +66,9 @@ contract Marketplace {
     emit LogNewStoreCreated(msg.sender, address(newStore));
   }
 
+  /** @dev Retrieve the stores' address by the current account.
+    * @return address[] The stores' address.
+    */
   function getStoreAddressesByOwner()
     public
     view
@@ -64,6 +77,9 @@ contract Marketplace {
     return storeAddressesByOwner[msg.sender];
   }
 
+  /** @dev Retrieve the role of the current account.
+    * @return A string indicating the user role.
+    */
   function getUserRole()
     public
     view
@@ -80,6 +96,9 @@ contract Marketplace {
     }
   }
 
+  /** @dev Retrieve the admin list.
+    * @return A list of the admins' address.
+    */
   function getAdmins()
     public
     view
@@ -88,6 +107,9 @@ contract Marketplace {
     return(adminsList);
   }
 
+  /** @dev Retrieve the store owners.
+    * @return A list of the store owners' address.
+    */
   function getStoreOwners()
     public
     view
@@ -96,7 +118,8 @@ contract Marketplace {
     return(storeOwnersList);
   }
 
-  /* Init */
+  /** @dev Init the contract with the current account as an admin.
+    */
   constructor() public {
     admins[msg.sender] = true;
     adminsList.push(msg.sender);
