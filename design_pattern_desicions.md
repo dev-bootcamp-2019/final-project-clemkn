@@ -4,20 +4,20 @@
 
 This is the architecture a the marketplace designed in the smart contracts.
 
-#### Marketplace
+#### Marketplace: All the application
 
 * Multiple admins
 * Multiple store owners
 * Multiple stores
 
-#### Store
+#### Store: Where you can add and buy items
 
 * An owner
 * A name
 * A description
 * Multiple items
 
-#### Item
+#### Item: Something you can buy
 
 * A name
 * A description
