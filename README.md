@@ -21,7 +21,7 @@ This application is an online marketplace that operates on the blockchain. This 
 
 Note: You have to check that the local blockchain is running on port 8545.
 
-1. Clone the repo: ``
+1. Clone the repo: `https://github.com/dev-bootcamp-2019/final-project-clemkn.git`
 2. Move into the directory: `cd final-project-clemkn`
 3. Start the local blockchain using ganache: `ganache-cli`
 4. Open a second window and compile the contracts with truffle: `truffle compile`
