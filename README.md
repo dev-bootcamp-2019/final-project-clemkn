@@ -1,6 +1,11 @@
 # Consensys Final Project: Decentralized Marketplace
 ##### Clément Quennesson - clement.quennesson@gmail.com
 
+### Additional Documentation
+
+* [Design Pattern Documentation](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/design_pattern_desicions.md)
+* [Avoiding Common Attacks Documentation](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/avoiding_common_attacks.md)
+
 ### Overview
 This application is an online marketplace that operates on the blockchain. This marketplace supports 3 roles of users.
 
