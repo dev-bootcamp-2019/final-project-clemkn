@@ -1,0 +1,124 @@
+# Deployment in Rinkeby (network_id:4)
+Contract address: 0xd6178AABd58938e9bdB28f4ae72baaE7691B8E4a
+Etherscan: https://rinkeby.etherscan.io/address/0xd6178aabd58938e9bdb28f4ae72baae7691b8e4a
+
+## Configuration in truffle-config.js
+```
+rinkeby: {
+  provider: () => new HDWallet(mnemonic, `https://rinkeby.infura.io/${infuraKey}`),
+  network_id: 4,          // Rinkeby's id
+  gas: 5500000,
+},
+```
+
+## truffle migrate --network rinkeby
+
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+Try: npm install --save truffle-hdwallet-provider@web3-one
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 7000598
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > account:             0x6494c5E9C6B2a5f550F0B73c59f726E0686017EA
+   > balance:             2.985591104
+   > gas used:            269908
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000539816 ETH
+
+   -------------------------------------
+   > Total cost:         0.000539816 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Marketplace'
+   -----------------------
+   > account:             0x6494c5E9C6B2a5f550F0B73c59f726E0686017EA
+   > balance:             2.979298142
+   > gas used:            3119447
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.006238894 ETH
+
+   -------------------------------------
+   > Total cost:         0.006238894 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.00677871 ETH
+
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+Try: npm install --save truffle-hdwallet-provider@web3-one
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 6996852
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x2215f07cc1a9f524b64d5d3fcb009ac0b76638c0ca08c61044f3dade6b473f7e
+   > Blocks: 1            Seconds: 12
+   > contract address:    0x797497a29a32D83fE33e529e9642442e61Ea9786
+   > account:             0x6494c5E9C6B2a5f550F0B73c59f726E0686017EA
+   > balance:             2.98043276
+   > gas used:            284908
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00569816 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00569816 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Marketplace'
+   -----------------------
+   > transaction hash:    0x02e5c593202ec1b28151b25d625f1ff1f4b1d89f915ec95b76d92570625da310
+   > Blocks: 0            Seconds: 8
+   > contract address:    0xd6178AABd58938e9bdB28f4ae72baaE7691B8E4a
+   > account:             0x6494c5E9C6B2a5f550F0B73c59f726E0686017EA
+   > balance:             2.91630314
+   > gas used:            3164447
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.06328894 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.06328894 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.0689871 ETH

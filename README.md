@@ -7,6 +7,9 @@
 * [Avoiding Common Attacks Documentation](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/avoiding_common_attacks.md)
 * [Deployed Addresses](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/deployed_addresses.txt)
 
+### Deployment on Rinkeby
+Contract Address: [0xd6178AABd58938e9bdB28f4ae72baaE7691B8E4a](https://rinkeby.etherscan.io/address/0xd6178aabd58938e9bdb28f4ae72baae7691b8e4a)
+
 ### Overview
 This application is an online marketplace that operates on the blockchain. This marketplace supports 3 roles of users.
 
