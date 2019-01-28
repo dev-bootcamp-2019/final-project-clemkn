@@ -57,7 +57,7 @@ contract Store {
   }
 
   /** @dev Check the string length */
-  modifier isStringLengthEnough(string str) {
+  modifier isStringLengthEnough(string memory str) {
     require(bytes(str).length <= 32, "String is too short");
     _;
   }
@@ -74,6 +74,7 @@ contract Store {
     if (stopped) {
       _;
     }
+  }
 
 
   /** @dev Init the Store contract.
