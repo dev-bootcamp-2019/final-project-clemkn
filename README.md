@@ -5,6 +5,7 @@
 
 * [Design Pattern Documentation](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/design_pattern_desicions.md)
 * [Avoiding Common Attacks Documentation](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/avoiding_common_attacks.md)
+* [Deployed Addresses](https://github.com/dev-bootcamp-2019/final-project-clemkn/blob/master/deployed_addresses.txt)
 
 ### Overview
 This application is an online marketplace that operates on the blockchain. This marketplace supports 3 roles of users.
