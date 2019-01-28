@@ -50,29 +50,3 @@ Note: You have to check that the local blockchain is running on port 8545.
 
 * Can explore all the stores and items.
 * Can buy an item with a specific quantity.
-
-
-### Architecture
-
-This is the architecture a the marketplace designed in the smart contracts.
-
-#### Marketplace
-
-* Multiple admins
-* Multiple store owners
-* Multiple stores
-
-#### Store
-
-* An owner
-* A name
-* A description
-* Multiple items
-
-#### Item
-
-* A name
-* A description
-* A price (wei)
-* A stock count
-* A sku
