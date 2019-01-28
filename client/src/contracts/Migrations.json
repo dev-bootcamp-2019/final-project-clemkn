@@ -1393,12 +1393,12 @@
     "1548551286195": {
       "events": {},
       "links": {},
-      "address": "0xEA914520672FB513Ac195b95D19aA6F570f40313",
-      "transactionHash": "0xe24f445d4ba46be242008f65504444eb2724d6f9412ab92db19203b58bfaa5ca"
+      "address": "0x79F19d090c81590E6691FEca18f5F167888742E8",
+      "transactionHash": "0xe2b6b66f80b91792d4a473bc67ddf6f0924811b48c9a6cd5a7c69ad0e5e9635e"
     }
   },
   "schemaVersion": "3.0.0",
-  "updatedAt": "2019-01-27T20:43:48.046Z",
+  "updatedAt": "2019-01-28T01:54:32.496Z",
   "devdoc": {
     "methods": {}
   },
