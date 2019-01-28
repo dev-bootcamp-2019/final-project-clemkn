@@ -25,7 +25,7 @@ Note: You have to check that the local blockchain is running on port 8545.
 5. Migrate the contracts with truffle: `truffle migrate`
 6. Run the tests with truffle: `truffle test`
 7. Install the front end dependencies via npm in the client folder: `cd client && npm install`
-8. Open the react app: `npm run start`
+8. Open the react app (in client folder): `npm run start`
 9. Open your browser with MetaMask and navigate to http://localhost:3000
 10. Appreciate :)
 
