@@ -10,6 +10,7 @@ contract Store {
   string public description;
   mapping (uint256 => Item) public itemsBySku;
   uint256 public latestSku;
+  bool public stopped = false;
 
   /* Struct Item */
   struct Item {
@@ -24,6 +25,7 @@ contract Store {
   event LogNewItemAdded(string name, string description, uint256 indexed sku, uint256 price);
   event LogStockCountUpdated(uint256 indexed sku, uint256 newStockCount);
   event LogPurchaseMade(uint256 indexed sku, uint256 quantity);
+  event LogContractStateToggled(bool isStopped);
 
   /** @dev Check if sender is owner. */
   modifier isOwner() {
@@ -54,6 +56,26 @@ contract Store {
       }
   }
 
+  /** @dev Check the string length */
+  modifier isStringLengthEnough(string str) {
+    require(bytes(str).length <= 32, "String is too short");
+    _;
+  }
+
+  /** @dev Don't execute in emergency */
+  modifier stopInEmergency {
+    if (!stopped) {
+      _;
+    }
+  }
+
+  /** @dev Execute in emergency */
+  modifier onlyInEmergency {
+    if (stopped) {
+      _;
+    }
+
+
   /** @dev Init the Store contract.
     * @param _owner Adress of the owner account.
     * @param _name Name of the store.
@@ -61,6 +83,8 @@ contract Store {
     */
   constructor(address payable _owner, string memory _name, string memory _description)
     public
+    isStringLengthEnough(_name)
+    isStringLengthEnough(_description)
   {
     owner = _owner;
     name = _name;
@@ -76,6 +100,8 @@ contract Store {
   function addNewItem(string memory _name, string memory _description, uint256 _price)
     public
     isOwner
+    isStringLengthEnough(_name)
+    isStringLengthEnough(_description)
   {
     Item memory newItem = Item({
         sku: SafeMath.add(latestSku, 1),
@@ -125,6 +151,15 @@ contract Store {
     isOwner
   {
     owner.transfer(address(this).balance);
+  }
+
+  /** @dev Owner can toggle contract in case of emergency. */
+  function toggleContractActive()
+    public
+    isOwner
+  {
+      stopped = !stopped;
+      emit LogContractStateToggled(stopped);
   }
 
 }
