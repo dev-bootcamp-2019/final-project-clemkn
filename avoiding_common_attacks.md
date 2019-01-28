@@ -8,7 +8,7 @@ As mentioned in Design Pattern Decisions, the Circuit Breaker Pattern is impleme
 * The SafeMath library contract from OpenZeppelin was used to prevent integer overflow attacks and conduct arithmetic safely.
 * The Store contract uses uint256 data type.
 
-## Protect data visibility
+## Default visibilities
 
 The contracts explicity label the visibility of the state variables and the functions.
 
@@ -22,4 +22,4 @@ Both contract can accept user inputs as string data type. All the functions that
 
 ## Tx.origin authentification
 
-Using tx.origin makes the contract vulnerable to phishing attack. I am using `msg.sender` instead of `tx.origin` as a preventive technique. 
+Using tx.origin makes the contract vulnerable to phishing attack. I am using `msg.sender` instead of `tx.origin` as a preventive technique.
