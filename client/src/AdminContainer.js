@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, FormGroup, ControlLabel, FormControl, HelpBlock, Alert } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, ControlLabel, FormControl, HelpBlock, Alert, Button } from 'react-bootstrap';
 import Header from './Header.js';
 
 class AdminContainer extends Component {
@@ -119,6 +119,7 @@ class AdminContainer extends Component {
                     onChange={this.adminHandleChange}
                   />
                 </FormGroup>
+                <Button type="submit">Submit</Button>
               </form>
             </Col>
 
@@ -140,6 +141,7 @@ class AdminContainer extends Component {
                     onChange={this.storeOwnerHandleChange}
                   />
                 </FormGroup>
+                <Button type="submit">Submit</Button>
               </form>
             </Col>
           </Row>

@@ -149,7 +149,7 @@ class StoreOwnerView extends Component {
                 <FormControl
                   type="text"
                   value={this.state.itemPriceValue}
-                  placeholder="Price"
+                  placeholder="Price (ETH)"
                   onChange={this.itemPriceHandleChange}
                 />
               </FormGroup>
